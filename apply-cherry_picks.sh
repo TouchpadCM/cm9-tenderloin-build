@@ -17,20 +17,28 @@ echo ">>> END 12782/1"
 echo ""
 
 
-# Temporary commit for working qcom OMX decoding
-echo ">>> START 13107/8"
+# Temporary branch for working QCOM OMX
+echo ">>> START branch qcom-omx-merge"
 pushd frameworks/base
-git fetch http://review.cyanogenmod.com/p/CyanogenMod/android_frameworks_base refs/changes/07/13107/8 && git cherry-pick FETCH_HEAD
+git checkout github/qcom-omx-merge
 popd
-echo ">>> END 13107/8"
+echo ">>> END branch qcom-omx-merge"
 echo ""
 
-# Added MSM vidc headers (latest from CAF)
-echo ">>> START 12862/1"
+# header changes for QCOM HAL update
+echo ">>> START 14048/1"
 pushd device/hp/tenderloin
-git fetch http://review.cyanogenmod.com/p/CyanogenMod/android_device_hp_tenderloin refs/changes/62/12862/2 && git cherry-pick FETCH_HEAD
+git fetch http://review.cyanogenmod.com/p/CyanogenMod/android_device_hp_tenderloin refs/changes/48/14048/1 && git cherry-pick FETCH_HEAD
 popd
-echo ">>> END 12862/1"
+echo ">>> END 14048/1"
+echo ""
+
+# revert disabled libstagefrighthw
+echo ">>> START revert 3cc23746ddecac49f0f0fcdc52c7d1714555041a"
+pushd hardware/qcom/media
+git revert --no-edit 3cc23746ddecac49f0f0fcdc52c7d1714555041a
+popd
+echo ">>> END revert 3cc23746ddecac49f0f0fcdc52c7d1714555041a"
 echo ""
 
 # add PRODUCT_PACKAGES for OMX
@@ -39,19 +47,5 @@ pushd device/hp/tenderloin
 git fetch http://review.cyanogenmod.com/p/CyanogenMod/android_device_hp_tenderloin refs/changes/29/13629/1 && git cherry-pick FETCH_HEAD
 popd
 echo ">>> END 13629/1"
-echo ""
-
-echo ">>> START 12960/1"
-pushd vendor/qcom/opensource/omx/mm-video
-git fetch http://review.cyanogenmod.com/p/CyanogenMod/android_vendor_qcom_opensource_omx_mm-video refs/changes/60/12960/2 && git cherry-pick FETCH_HEAD
-popd
-echo ">>> END 12960/1"
-echo ""
-
-echo ">>> START 12961/1"
-pushd vendor/qcom/opensource/omx/mm-core
-git fetch http://review.cyanogenmod.com/p/CyanogenMod/android_vendor_qcom_opensource_omx_mm-core refs/changes/61/12961/1 && git cherry-pick FETCH_HEAD
-popd
-echo ">>> END 12961/1"
 echo ""
 
