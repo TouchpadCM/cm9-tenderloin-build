@@ -16,36 +16,3 @@ popd
 echo ">>> END 12782/1"
 echo ""
 
-
-# Temporary branch for working QCOM OMX
-echo ">>> START branch qcom-omx-merge"
-pushd frameworks/base
-git checkout github/qcom-omx-merge
-popd
-echo ">>> END branch qcom-omx-merge"
-echo ""
-
-# header changes for QCOM HAL update
-echo ">>> START 14048/1"
-pushd device/hp/tenderloin
-git fetch http://review.cyanogenmod.com/p/CyanogenMod/android_device_hp_tenderloin refs/changes/48/14048/1 && git cherry-pick FETCH_HEAD
-popd
-echo ">>> END 14048/1"
-echo ""
-
-# revert disabled libstagefrighthw
-echo ">>> START revert 3cc23746ddecac49f0f0fcdc52c7d1714555041a"
-pushd hardware/qcom/media
-git revert --no-edit 3cc23746ddecac49f0f0fcdc52c7d1714555041a
-popd
-echo ">>> END revert 3cc23746ddecac49f0f0fcdc52c7d1714555041a"
-echo ""
-
-# add PRODUCT_PACKAGES for OMX
-echo ">>> START 13629/1"
-pushd device/hp/tenderloin
-git fetch http://review.cyanogenmod.com/p/CyanogenMod/android_device_hp_tenderloin refs/changes/29/13629/1 && git cherry-pick FETCH_HEAD
-popd
-echo ">>> END 13629/1"
-echo ""
-
