@@ -1,4 +1,8 @@
 
+
+NOTE: At this time, no cherry-picks/etc. are needed. Everything is merged.
+
+
 The apply-cherry_picks.sh script applies the needed tweaks to the
 existing CM repos for building on tenderloin (HP Touchpad).
 This script should be run after doing a 'reposync'. Also, it should
